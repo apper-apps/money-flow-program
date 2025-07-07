@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-white text-gray-900 font-sans;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-sm bg-white/80 border border-gray-200/50;
+  }
+  
+  .premium-shadow {
+    box-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.1), 0 4px 25px -5px rgba(0, 0, 0, 0.06);
+  }
+  
+  .premium-hover {
+    @apply transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
+  }
+}
+
+/* Toast notification styling */
+.Toastify__toast-container {
+  @apply z-[9999];
+}
+
+.Toastify__toast {
+  @apply rounded-lg shadow-lg border border-gray-200/50;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  min-height: 56px;
+  padding: 12px 16px;
+}
+
+.Toastify__toast--success {
+  @apply bg-white border-success/20;
+}
+
+.Toastify__toast--error {
+  @apply bg-white border-error/20;
+}
+
+.Toastify__toast--info {
+  @apply bg-white border-info/20;
+}
+
+.Toastify__toast--warning {
+  @apply bg-white border-warning/20;
+}
+
+.Toastify__progress-bar {
+  @apply h-1;
+}
+
+.Toastify__close-button {
+  @apply text-gray-400 hover:text-gray-600;
+}

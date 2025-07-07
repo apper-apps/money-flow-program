@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "category": "Food & Dining",
+    "allocated": 500.00,
+    "spent": 0,
+    "period": "monthly"
+  },
+  {
+    "Id": 2,
+    "category": "Transportation",
+    "allocated": 200.00,
+    "spent": 0,
+    "period": "monthly"
+  },
+  {
+    "Id": 3,
+    "category": "Entertainment",
+    "allocated": 100.00,
+    "spent": 0,
+    "period": "monthly"
+  },
+  {
+    "Id": 4,
+    "category": "Bills & Utilities",
+    "allocated": 300.00,
+    "spent": 0,
+    "period": "monthly"
+  },
+  {
+    "Id": 5,
+    "category": "Healthcare",
+    "allocated": 150.00,
+    "spent": 0,
+    "period": "monthly"
+  },
+  {
+    "Id": 6,
+    "category": "Shopping",
+    "allocated": 250.00,
+    "spent": 0,
+    "period": "monthly"
+  }
+]

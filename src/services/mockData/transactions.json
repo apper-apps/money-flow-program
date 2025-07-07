@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "description": "Grocery shopping at Whole Foods",
+    "amount": 87.50,
+    "category": "Food & Dining",
+    "type": "expense",
+    "date": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "description": "Monthly salary",
+    "amount": 5000.00,
+    "category": "Salary",
+    "type": "income",
+    "date": "2024-01-01T09:00:00Z"
+  },
+  {
+    "Id": 3,
+    "description": "Gas station fill-up",
+    "amount": 45.20,
+    "category": "Transportation",
+    "type": "expense",
+    "date": "2024-01-14T16:45:00Z"
+  },
+  {
+    "Id": 4,
+    "description": "Netflix subscription",
+    "amount": 15.99,
+    "category": "Entertainment",
+    "type": "expense",
+    "date": "2024-01-10T12:00:00Z"
+  },
+  {
+    "Id": 5,
+    "description": "Freelance project payment",
+    "amount": 750.00,
+    "category": "Investment",
+    "type": "income",
+    "date": "2024-01-12T14:20:00Z"
+  },
+  {
+    "Id": 6,
+    "description": "Electric bill",
+    "amount": 120.75,
+    "category": "Bills & Utilities",
+    "type": "expense",
+    "date": "2024-01-08T11:15:00Z"
+  },
+  {
+    "Id": 7,
+    "description": "Online shopping - Amazon",
+    "amount": 67.89,
+    "category": "Shopping",
+    "type": "expense",
+    "date": "2024-01-13T19:30:00Z"
+  },
+  {
+    "Id": 8,
+    "description": "Restaurant dinner",
+    "amount": 85.40,
+    "category": "Food & Dining",
+    "type": "expense",
+    "date": "2024-01-11T20:15:00Z"
+  },
+  {
+    "Id": 9,
+    "description": "Doctor visit copay",
+    "amount": 25.00,
+    "category": "Healthcare",
+    "type": "expense",
+    "date": "2024-01-09T10:30:00Z"
+  },
+  {
+    "Id": 10,
+    "description": "Coffee shop",
+    "amount": 4.75,
+    "category": "Food & Dining",
+    "type": "expense",
+    "date": "2024-01-16T08:00:00Z"
+  }
+]
