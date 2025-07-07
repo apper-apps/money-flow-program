@@ -76,16 +76,13 @@
     background: rgba(255, 255, 255, 0.8);
   }
   
-  .Toastify__close-button {
+.Toastify__close-button {
     color: rgba(255, 255, 255, 0.8);
   }
 }
-    @apply border-border;
-  }
-  
-  body {
-    @apply bg-white text-gray-900 font-sans;
-  }
+
+body {
+  @apply bg-white text-gray-900 font-sans;
 }
 
 @layer components {
