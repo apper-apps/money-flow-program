@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1,
+    "description": "Monthly Rent Payment",
+    "amount": 1200,
+    "type": "expense",
+    "category": "Bills & Utilities",
+    "frequency": "monthly",
+    "startDate": "2024-01-01",
+    "nextDate": "2024-02-01",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "description": "Weekly Groceries",
+    "amount": 150,
+    "type": "expense",
+    "category": "Food & Dining",
+    "frequency": "weekly",
+    "startDate": "2024-01-07",
+    "nextDate": "2024-01-14",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "description": "Monthly Salary",
+    "amount": 5000,
+    "type": "income",
+    "category": "Business",
+    "frequency": "monthly",
+    "startDate": "2024-01-01",
+    "nextDate": "2024-02-01",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "description": "Annual Insurance Premium",
+    "amount": 800,
+    "type": "expense",
+    "category": "Healthcare",
+    "frequency": "yearly",
+    "startDate": "2024-01-01",
+    "nextDate": "2025-01-01",
+    "isActive": true,
+    "createdAt": "2024-01-01T00:00:00Z"
+  }
+]

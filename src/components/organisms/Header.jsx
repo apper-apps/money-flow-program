@@ -8,10 +8,11 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navItems = [
+const navItems = [
     { path: '/', label: 'Dashboard', icon: 'LayoutDashboard' },
     { path: '/transactions', label: 'Transactions', icon: 'Receipt' },
     { path: '/budget', label: 'Budget', icon: 'PiggyBank' },
+    { path: '/templates', label: 'Templates', icon: 'Repeat' },
   ];
 
   const isActive = (path) => location.pathname === path;

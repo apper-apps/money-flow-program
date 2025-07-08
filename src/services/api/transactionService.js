@@ -57,8 +57,21 @@ class TransactionService {
     }
     
     this.transactions.splice(index, 1);
+this.transactions.splice(index, 1);
     return true;
   }
-}
 
-export const transactionService = new TransactionService();
+  async createFromTemplate(template) {
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    const transactionData = {
+      description: template.description,
+      amount: template.amount,
+      type: template.type,
+      category: template.category,
+      date: new Date().toISOString()
+    };
+
+    return this.create(transactionData);
+  }
+}
