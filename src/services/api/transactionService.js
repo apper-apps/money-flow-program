@@ -55,8 +55,6 @@ class TransactionService {
     if (index === -1) {
       throw new Error('Transaction not found');
     }
-    
-    this.transactions.splice(index, 1);
 this.transactions.splice(index, 1);
     return true;
   }
@@ -75,3 +73,10 @@ this.transactions.splice(index, 1);
     return this.create(transactionData);
   }
 }
+
+// Create and export instance
+const transactionService = new TransactionService();
+
+// Export both class and instance
+export { TransactionService, transactionService };
+export default transactionService;
