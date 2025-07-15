@@ -23,10 +23,10 @@ const navItems = [
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
+<div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
               <ApperIcon name="DollarSign" size={20} className="text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">MoneyFlow</span>
+            <span className="text-xl font-bold gradient-text">SaveMoney</span>
           </Link>
 
           {/* Desktop Navigation */}
