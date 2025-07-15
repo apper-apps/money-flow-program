@@ -8,12 +8,25 @@ const Slider = forwardRef(({
   max = 100, 
   step = 1, 
   onChange,
+  showValue = false,
+  formatValue = (val) => val.toString(),
   ...props 
 }, ref) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
   return (
     <div className="relative">
+      {showValue && (
+        <div 
+          className="absolute -top-8 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg z-10"
+          style={{ left: `${percentage}%` }}
+        >
+          <div className="text-center font-medium">
+            {formatValue(value)}
+          </div>
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent border-t-gray-900"></div>
+        </div>
+      )}
       <input
         ref={ref}
         type="range"
