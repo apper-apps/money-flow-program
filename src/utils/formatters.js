@@ -21,6 +21,14 @@ export const formatShortDate = (date) => {
   if (!date) return '';
   if (typeof date === 'string') {
     return format(new Date(date), 'MMM dd');
+}
+  return format(date, 'MMM dd');
+};
+
+export const formatDateForChart = (date) => {
+  if (!date) return '';
+  if (typeof date === 'string') {
+    return format(new Date(date), 'MMM dd');
   }
   return format(date, 'MMM dd');
 };
@@ -29,7 +37,6 @@ export const formatPercentage = (value) => {
   if (typeof value !== 'number') return '0%';
   return `${Math.round(value)}%`;
 };
-
 export const calculatePercentage = (current, target) => {
   if (target === 0) return 0;
   return Math.min((current / target) * 100, 100);

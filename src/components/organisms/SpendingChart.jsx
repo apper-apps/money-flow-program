@@ -4,7 +4,7 @@ import Chart from 'react-apexcharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/atoms/Card';
 import Button from '@/components/atoms/Button';
 import ApperIcon from '@/components/ApperIcon';
-import { formatCurrency } from '@/utils/formatters';
+import { formatCurrency, formatDateForChart } from '@/utils/formatters';
 
 const SpendingChart = ({ transactions = [] }) => {
   const [chartType, setChartType] = useState('bar');
@@ -14,28 +14,52 @@ const SpendingChart = ({ transactions = [] }) => {
     processChartData();
   }, [transactions]);
 
-  const processChartData = () => {
+const processChartData = () => {
     const expenseTransactions = transactions.filter(t => t.type === 'expense');
-    const categoryTotals = {};
-
-    expenseTransactions.forEach(transaction => {
-      const category = transaction.category;
-      if (!categoryTotals[category]) {
-        categoryTotals[category] = 0;
-      }
-      categoryTotals[category] += transaction.amount;
-    });
-
-    const categories = Object.keys(categoryTotals);
-    const amounts = Object.values(categoryTotals);
-
-    setChartData({
-      categories,
-      series: chartType === 'bar' ? [{ name: 'Spending', data: amounts }] : amounts
-    });
+    
+    if (chartType === 'line') {
+      // Process data for line chart - expenses over time
+      const dailyExpenses = {};
+      
+      expenseTransactions.forEach(transaction => {
+        const date = new Date(transaction.date).toISOString().split('T')[0];
+        if (!dailyExpenses[date]) {
+          dailyExpenses[date] = 0;
+        }
+        dailyExpenses[date] += transaction.amount;
+      });
+      
+      const sortedDates = Object.keys(dailyExpenses).sort();
+      const categories = sortedDates.map(date => formatDateForChart(date));
+      const amounts = sortedDates.map(date => dailyExpenses[date]);
+      
+      setChartData({
+        categories,
+        series: [{ name: 'Daily Expenses', data: amounts }]
+      });
+    } else {
+      // Process data for bar and pie charts - expenses by category
+      const categoryTotals = {};
+      
+      expenseTransactions.forEach(transaction => {
+        const category = transaction.category;
+        if (!categoryTotals[category]) {
+          categoryTotals[category] = 0;
+        }
+        categoryTotals[category] += transaction.amount;
+      });
+      
+      const categories = Object.keys(categoryTotals);
+      const amounts = Object.values(categoryTotals);
+      
+      setChartData({
+        categories,
+        series: chartType === 'bar' ? [{ name: 'Spending', data: amounts }] : amounts
+      });
+    }
   };
 
-  const chartOptions = {
+const chartOptions = {
     chart: {
       type: chartType,
       toolbar: { show: false },
@@ -60,6 +84,10 @@ const SpendingChart = ({ transactions = [] }) => {
         },
       },
     },
+    stroke: {
+      curve: 'smooth',
+      width: chartType === 'line' ? 3 : 0,
+    },
     xaxis: {
       categories: chartData.categories,
       labels: {
@@ -67,6 +95,7 @@ const SpendingChart = ({ transactions = [] }) => {
           colors: '#64748b',
           fontSize: '12px',
         },
+        rotate: chartType === 'line' ? -45 : 0,
       },
     },
     yaxis: {
@@ -90,12 +119,22 @@ const SpendingChart = ({ transactions = [] }) => {
         formatter: (value) => formatCurrency(value),
       },
     },
+    grid: {
+      show: chartType === 'line',
+      borderColor: '#e2e8f0',
+      strokeDashArray: 3,
+    },
     responsive: [
       {
         breakpoint: 768,
         options: {
           legend: {
             position: 'bottom',
+          },
+          xaxis: {
+            labels: {
+              rotate: -45,
+            },
           },
         },
       },
@@ -110,12 +149,12 @@ const SpendingChart = ({ transactions = [] }) => {
     >
       <Card className="premium-shadow">
         <CardHeader>
-          <CardTitle className="flex items-center justify-between">
+<CardTitle className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded-lg bg-gradient-to-r from-secondary to-primary bg-opacity-10">
                 <ApperIcon name="BarChart3" size={20} className="text-secondary" />
               </div>
-              <span>Monthly Spending</span>
+              <span>{chartType === 'line' ? 'Expenses Over Time' : 'Monthly Spending'}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Button
@@ -132,6 +171,13 @@ const SpendingChart = ({ transactions = [] }) => {
               >
                 <ApperIcon name="PieChart" size={16} />
               </Button>
+              <Button
+                variant={chartType === 'line' ? 'primary' : 'outline'}
+                size="sm"
+                onClick={() => setChartType('line')}
+              >
+                <ApperIcon name="TrendingUp" size={16} />
+              </Button>
             </div>
           </CardTitle>
         </CardHeader>
@@ -146,10 +192,10 @@ const SpendingChart = ({ transactions = [] }) => {
                 height="100%"
               />
             ) : (
-              <div className="flex items-center justify-center h-full text-gray-500">
+<div className="flex items-center justify-center h-full text-gray-500">
                 <div className="text-center">
                   <ApperIcon name="BarChart3" size={48} className="mx-auto mb-4 text-gray-300" />
-                  <p>No spending data available</p>
+                  <p>No {chartType === 'line' ? 'expense' : 'spending'} data available</p>
                 </div>
               </div>
             )}
