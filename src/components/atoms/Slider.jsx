@@ -13,12 +13,13 @@ const Slider = forwardRef(({
   ...htmlProps 
 }, ref) => {
   // Separate valid HTML input attributes from custom component props
+// Filter out React-specific props that shouldn't be passed to DOM
   const { 
     showValue: _showValue, 
     formatValue: _formatValue, 
     onChange: _onChange,
-    ...validInputProps 
-  } = { showValue, formatValue, onChange, ...htmlProps };
+    ...inputProps 
+  } = htmlProps;
   const percentage = ((value - min) / (max - min)) * 100;
 
   return (
@@ -48,8 +49,8 @@ const Slider = forwardRef(({
         )}
         style={{
           background: `linear-gradient(to right, #2563eb 0%, #7c3aed ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`
-        }}
-{...validInputProps}
+}}
+        {...inputProps}
       />
       <style jsx>{`
         .slider-thumb::-webkit-slider-thumb {
