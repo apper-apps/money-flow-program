@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/atoms/Card";
-import ConfirmDialog from "@/components/molecules/ConfirmDialog";
 import { budgetService } from "@/services/api/budgetService";
 import { toast } from "react-toastify";
 import ApperIcon from "@/components/ApperIcon";
 import Budget from "@/components/pages/Budget";
 import FormField from "@/components/molecules/FormField";
+import ConfirmDialog from "@/components/molecules/ConfirmDialog";
 import Button from "@/components/atoms/Button";
 import Select from "@/components/atoms/Select";
 import { calculatePercentage, formatCurrency } from "@/utils/formatters";
@@ -277,13 +277,12 @@ const handleSaveBudget = (budget) => {
         })}
       </div>
 
-      {budgets.length === 0 && (
+{budgets.length === 0 && (
         <div className="text-center py-12">
           <ApperIcon name="PiggyBank" size={64} className="mx-auto mb-4 text-gray-300" />
           <h3 className="text-lg font-semibold text-gray-900 mb-2">No budgets set</h3>
           <p className="text-gray-600">Create your first budget to start managing your spending.</p>
         </div>
-</div>
       )}
 
       {/* Delete Confirmation Dialog */}
@@ -296,8 +295,9 @@ const handleSaveBudget = (budget) => {
         confirmText="Delete"
         cancelText="Cancel"
         type="danger"
-      />
+/>
     </div>
+  );
 };
 
 export default BudgetManager;
